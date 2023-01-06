@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+<!--    {% if title %}-->
+<!--   <title> Django - Blog &#45;&#45; {{title}}   </title>-->
+<!--    {% else %}-->
+<!--    <title> Django - Blog  </title>-->
+<!--    {% endif  %}-->
+
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert - {{ message.tags }}"></div>
+        {{ message }}
+        {% endfor  %}
+    {% endif %}
+    {% block content %}{% endblock  %}
+</body>
+</html>

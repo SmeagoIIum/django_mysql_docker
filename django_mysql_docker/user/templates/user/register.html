@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<form method="POST" action="" id="login">
+    {% csrf_token %}
+   <fieldset>
+      <legend> Fields with * are obligatory</legend>
+        <label for="first_name">First name *
+           <input id="first_name" type="text" name="first_name" size="30">
+        </label>
+        <label for="last_name">Last name *
+           <input id="last_name" type="text" name="last_name" size="30">
+        </label>
+        <label for="description">Description
+           <input id="description" type="text" name="description" size="100">
+        </label>
+               <label for="birth_date">Birth date *
+           <input id="birth_date" type="date" name="birth_date" size="30">
+        </label>
+        <label for="Senden">
+           <input id="Senden" type="submit" name="senden" value="Create">
+        </label>
+    </fieldset>
+</form>
+{% endblock content %}

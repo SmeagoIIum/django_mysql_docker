@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "blog/base.html" %}
+
+<!--{% block content %}-->
+<!--{% for user in users %}-->
+<!--    <p>First name: {{user.first_name}} Last name: {{user.last_name}}</p>-->
+<!--    <p>Beschreibung: {{user.description}}</p>-->
+<!--    <p>User geboren am {{user.birth_date}}.</p>-->
+<!--{% endfor %}-->
+<!--{% endblock content %}-->
+
+{% block content %}
+<table>
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Description</th>
+        <th>Birth date</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td>{{user.description}}</td>
+        <td>{{user.birth_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}
