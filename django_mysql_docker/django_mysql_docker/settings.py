@@ -25,13 +25,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-+=6-c2sr3u^k((a_+8-mxpc4!eq__%!riui17l02f*-1(k+_8+'
 
 # Application definition
 
 INSTALLED_APPS = [
     'opinion_ate.apps.OpinionAteConfig',
     'rest_framework',
-    'blog.apps.BlogConfig',
     'user.apps.UserConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

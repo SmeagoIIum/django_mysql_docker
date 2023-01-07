@@ -22,12 +22,14 @@ from user import views as user_views
 from django.urls import include, path
 from rest_framework import routers
 from opinion_ate import views as opinion_ate_views
+from user.views import UserListView
 
 router = routers.DefaultRouter()
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    # path('admin/', admin.site.urls),
+    # path('', include('user.urls')),
+    path("users/", UserListView.as_view()),
     path('register/', user_views.register, name="register")
 ]
