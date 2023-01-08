@@ -15,11 +15,11 @@ services:
       - "8000:8000"
     depends_on:
       - mysql-airflow
-    restart: on-failure
+    restart: always
 
   adminer-airflow:
     image: adminer
-    restart: unless-stopped
+    restart: always
     container_name: adminer-airflow
     depends_on:
       - mysql-airflow
@@ -28,7 +28,7 @@ services:
 
   mysql-airflow:
     image: mysql:8.0.19
-    restart: unless-stopped
+    restart: always
     container_name: mysql-airflow
     ports:
       - 53306:3306

@@ -4,7 +4,6 @@ from django.contrib import messages
 import logging
 from .models import User
 from django.shortcuts import render
-from django_tables2 import RequestConfig
 from django_tables2 import SingleTableView
 from .tables import UserTable
 
@@ -26,21 +25,25 @@ def register(request):
             except Exception as e:
                 print(e)
                 raise e
-
     else:
         userform = UserForm()
-    return render(request, 'user/register.html', {'user': userform})
+    return render(request, 'user/register.html', {'form': userform})
 
 
-def home(request):
-    table = UserTable(User.objects.all())
-    model = User
-    table_class = UserTable
-    RequestConfig(request).configure(table)
-    return render(request, 'user/home.html', {'table': table})
+# def home(request):
+#     table = User.objects.all()
+#     model = User
+#     return render(request, 'user/home.html', locals())
 
 
 class UserListView(SingleTableView):
     model = User
     table_class = UserTable
     template_name = 'user/user.html'
+
+
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    table = UserTable(User.objects.all())
+    context['table'] = table
+    return context

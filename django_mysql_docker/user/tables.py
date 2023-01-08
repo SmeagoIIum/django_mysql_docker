@@ -6,4 +6,4 @@ class UserTable(tables.Table):
     class Meta:
         model = User
         template_name = "django_tables2/bootstrap.html"
-        fields = ("First Name", "Last Name", "Description", "Birth date")
+        fields = ("first_name", "last_name", "description", "birth_date")

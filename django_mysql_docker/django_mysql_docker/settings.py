@@ -31,7 +31,6 @@ SECRET_KEY = 'django-insecure-+=6-c2sr3u^k((a_+8-mxpc4!eq__%!riui17l02f*-1(k+_8+
 # Application definition
 
 INSTALLED_APPS = [
-    'opinion_ate.apps.OpinionAteConfig',
     'rest_framework',
     'user.apps.UserConfig',
     'django.contrib.admin',
@@ -77,34 +76,23 @@ WSGI_APPLICATION = 'django_mysql_docker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'airflow_db'),
+        'USER': os.environ.get('MYSQL_USER', 'root'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'mysql'),
+        'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'mysql-airflow'),
+        'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.environ.get('MYSQL_DATABASE', 'mydatabase'),
-#         'USER': os.environ.get('MYSQL_USER', 'root'),
-#         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
-#         'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'db'),
-#         'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.environ.get('MYSQL_DATABASE', 'airflow_db'),
-#         'USER': os.environ.get('MYSQL_USER', 'airflow_db_user'),
-#         'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'airflow_db_passwd'),
-#         'HOST': os.environ.get('MYSQL_DATABASE_HOST', 'mysql-airflow'),
-#         'PORT': os.environ.get('MYSQL_DATABASE_PORT', 3306),
-#     }
-# }
 
 
 # Password validation
